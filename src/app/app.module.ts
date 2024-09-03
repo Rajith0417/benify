@@ -10,6 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatIconModule} from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    MatIconModule,
+    BrowserAnimationsModule, // Required for Angular Material
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     provideAnimationsAsync()
