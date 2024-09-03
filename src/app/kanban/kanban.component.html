@@ -1,1 +1,23 @@
-<p>kanban works!</p>
+<div class="kanban-board">
+  <div class="column" *ngFor="let status of statuses">
+    <h3>{{ status }}</h3>
+    <div
+  cdkDropList
+  [cdkDropListData]="getTasks(status)"
+  (cdkDropListDropped)="drop($event)"
+  class="task-container"
+>
+  <app-task
+    *ngFor="let task of getTasks(status)"
+    [task]="task"
+    (taskRemoved)="removeTask(task.id)"
+    cdkDrag
+  ></app-task>
+</div>
+  </div>
+</div>
+
+<form (ngSubmit)="addTask()">
+  <input [(ngModel)]="newTask" placeholder="New task" name="task" required />
+  <button type="submit">Add Task</button>
+</form>
