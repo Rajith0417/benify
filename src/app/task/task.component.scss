@@ -1,0 +1,17 @@
+.task {
+  width: 100%;
+  min-height: 50px;
+  background-color: white;
+  border-radius: 10px;
+  border: solid 2px #f1f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
