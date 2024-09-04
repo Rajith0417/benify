@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class FormComponent {
 
+  taskDescription: string = '';
+  @Output() descriptionEvent = new EventEmitter<string>();
+
+  submitTask() {
+    this.descriptionEvent.emit(this.taskDescription);
+    this.taskDescription = "";
+  }
 }

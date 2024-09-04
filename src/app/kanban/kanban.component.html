@@ -1,10 +1,4 @@
-<form (ngSubmit)="addTask()" class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>create new task</mat-label>
-    <input type="text" matInput [(ngModel)]="newTask" name="task">
-    <mat-icon matSuffix>add</mat-icon>
-  </mat-form-field>
-</form>
+<app-form (descriptionEvent)="addTask($event)"></app-form>
 
 <div class="kanban-board">
   <div class="column" *ngFor="let status of statuses">
@@ -20,7 +14,7 @@
       <app-task
         *ngFor="let task of getTasks(status)"
         [task]="task"
-        (taskRemoved)="removeTask(task.id)"
+        (removeTaskId)="removeTask($event)"
         cdkDrag
         [cdkDragData]="task"
       >
