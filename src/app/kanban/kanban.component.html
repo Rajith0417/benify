@@ -1,7 +1,7 @@
 <form (ngSubmit)="addTask()" class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>create new task</mat-label>
-    <input type="text" matInput [(ngModel)]="newTask" name="task" >
+    <input type="text" matInput [(ngModel)]="newTask" name="task">
     <mat-icon matSuffix>add</mat-icon>
   </mat-form-field>
 </form>
@@ -13,6 +13,8 @@
       cdkDropList
       [cdkDropListData]="getTasks(status)"
       (cdkDropListDropped)="drop($event)"
+      [id]="status"
+      [cdkDropListConnectedTo]="statuses"
       class="task-container"
     >
       <app-task
@@ -20,7 +22,10 @@
         [task]="task"
         (taskRemoved)="removeTask(task.id)"
         cdkDrag
-      ></app-task>
+        [cdkDragData]="task"
+      >
+        <div class="task-placeholder" *cdkDragPlaceholder></div>
+      </app-task>
     </div>
   </div>
 </div>
