@@ -20,16 +20,19 @@
   background-color: #f4f4f4;
   border-radius: 10px;
   min-height: 600px;
+  max-height: 50vh;
   box-sizing: border-box;
   h3 {
     text-align: center;
   }
 }
 .task-container {
-  height: 100%;
+  height: calc(100% - 80px);
   display: flex;
   flex-direction: column;
   gap: 15px;
+  overflow: auto;
+  padding: 0 0 20px;
 }
 .task {
   padding: 10px;
