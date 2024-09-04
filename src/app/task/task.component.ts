@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../kanban/task';
 
 @Component({
@@ -8,7 +8,9 @@ import { Task } from '../kanban/task';
 })
 export class TaskComponent {
   @Input() task!: Task;
+  @Output() removeTaskId = new EventEmitter<number>();
 
-  removeTask() {
+  removeTask(id: number) {
+    this.removeTaskId.emit(id);
   }
 }

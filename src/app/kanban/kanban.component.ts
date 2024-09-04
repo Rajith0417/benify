@@ -14,17 +14,17 @@ import {
 export class KanbanComponent {
   statuses = ['To Do', 'Implementing', 'Done'];
   tasks: Task[] = [];
-  newTask: string = '';
 
   constructor(private cdr: ChangeDetectorRef) {}
 
-  addTask() {
+  addTask(taskDescription: string) {
+    console.log(taskDescription);
+
     this.tasks.push({
       id: this.tasks.length + 1,
-      description: this.newTask,
+      description: taskDescription,
       status: 'To Do',
     });
-    this.newTask = '';
     this.cdr.detectChanges();
   }
 
