@@ -5,6 +5,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { TaskService } from '../service/task.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-kanban',
@@ -15,17 +17,17 @@ export class KanbanComponent {
   statuses = ['To Do', 'Implementing', 'Done'];
   tasks: Task[] = [];
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private taskService: TaskService, private router: Router) {}
+
+  ngOnInit() {
+    this.taskService.tasks$.subscribe((tasks) => {
+      this.tasks = tasks;
+      this.cdr.detectChanges();
+    });
+  }
 
   addTask(taskDescription: string) {
-    console.log(taskDescription);
-
-    this.tasks.push({
-      id: this.tasks.length + 1,
-      description: taskDescription,
-      status: 'To Do',
-    });
-    this.cdr.detectChanges();
+    this.taskService.addTask(taskDescription);
   }
 
   getTasks(status: string) {
@@ -33,9 +35,12 @@ export class KanbanComponent {
   }
 
   removeTask(id: number) {
-    this.tasks = this.tasks.filter((task) => task.id !== id);
-    this.cdr.detectChanges();
+    this.taskService.removeTask(id);
   }
+
+  checkStateManagement(){
+    this.router.navigate(['/state-management-check']);
+  };
 
   drop(event: CdkDragDrop<Task[]>) {
     console.log('Drop event:', event); // Check the event in the console

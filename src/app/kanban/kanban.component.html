@@ -1,5 +1,7 @@
 <app-form (descriptionEvent)="addTask($event)"></app-form>
-
+<button (click)="checkStateManagement()">
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="output"></mat-icon>
+</button>
 <div class="kanban-board">
   <div class="column" *ngFor="let status of statuses">
     <h3>{{ status }}</h3>
