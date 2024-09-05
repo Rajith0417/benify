@@ -35,6 +35,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   providers: [
     provideAnimationsAsync()
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

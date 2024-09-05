@@ -36,9 +36,4 @@ export class TaskService {
     this.tasksSubject.next(updatedTasks);
   }
 
-  getTasksByStatus(status: 'To Do' | 'Implementing' | 'Done') {
-    return this.tasks$.pipe(
-      map((tasks: Task[]) => tasks.filter(singleTask => singleTask.status === status))
-    );
-  }
 }

@@ -17,7 +17,11 @@ export class KanbanComponent {
   statuses = ['To Do', 'Implementing', 'Done'];
   tasks: Task[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, private taskService: TaskService, private router: Router) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private taskService: TaskService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.taskService.tasks$.subscribe((tasks) => {
@@ -38,13 +42,11 @@ export class KanbanComponent {
     this.taskService.removeTask(id);
   }
 
-  checkStateManagement(){
+  checkStateManagement() {
     this.router.navigate(['/state-management-check']);
-  };
+  }
 
   drop(event: CdkDragDrop<Task[]>) {
-    console.log('Drop event:', event); // Check the event in the console
-
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -60,13 +62,8 @@ export class KanbanComponent {
       );
 
       const task = event.container.data[event.currentIndex];
-      console.log('Moved task:', task); // Log the moved task
       task.status = event.container.id as 'To Do' | 'Implementing' | 'Done';
     }
-
-    // Log the current state of tasks
-    console.log('Current tasks state:', JSON.parse(JSON.stringify(this.tasks)));
-
     this.cdr.detectChanges();
   }
 }
