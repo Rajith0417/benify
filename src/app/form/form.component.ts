@@ -11,7 +11,9 @@ export class FormComponent {
   @Output() descriptionEvent = new EventEmitter<string>();
 
   submitTask() {
-    this.descriptionEvent.emit(this.taskDescription);
-    this.taskDescription = "";
+    if(this.taskDescription != ""){
+      this.descriptionEvent.emit(this.taskDescription);
+      this.taskDescription = "";
+    }
   }
 }
