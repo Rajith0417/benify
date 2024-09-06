@@ -1,7 +1,4 @@
 <app-form (descriptionEvent)="addTask($event)"></app-form>
-<button class="state-management" (click)="checkStateManagement()">
-  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="output"></mat-icon>
-</button>
 <div class="kanban-board">
   <div class="column" *ngFor="let status of statuses">
     <h3>{{ status }}</h3>
@@ -17,6 +14,7 @@
         *ngFor="let task of getTasks(status)"
         [task]="task"
         (removeTaskId)="removeTask($event)"
+        (showTaskId)="openTask($event)"
         cdkDrag
         [cdkDragData]="task"
       >

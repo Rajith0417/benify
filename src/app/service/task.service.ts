@@ -36,4 +36,8 @@ export class TaskService {
     this.tasksSubject.next(updatedTasks);
   }
 
+  getTaskById(id: number): Task | undefined {
+    return this.tasksSubject.getValue().find(task => task.id === id);
+  }
+
 }

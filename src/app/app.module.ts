@@ -14,23 +14,27 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TaskOpenComponent } from './task-open/task-open.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     KanbanComponent,
     TaskComponent,
-    FormComponent
+    FormComponent,
+    TaskOpenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     DragDropModule,
+    MatTooltipModule,
     MatIconModule,
     BrowserAnimationsModule, // Required for Angular Material
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
   ],
   providers: [
     provideAnimationsAsync()

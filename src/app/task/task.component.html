@@ -1,6 +1,9 @@
 <div class="task">
   {{ task.description }}
-  <button (click)="removeTask(task.id)">
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete"></mat-icon>
+  <button (click)="removeTask(task.id)" class="delete" matTooltip="Delete Task">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="delete" ></mat-icon>
+  </button>
+  <button (click)="openTask(task.id)" class="open" matTooltip="Open Task">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="open_with"></mat-icon>
   </button>
 </div>

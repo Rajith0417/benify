@@ -42,6 +42,10 @@ export class KanbanComponent {
     this.taskService.removeTask(id);
   }
 
+  openTask(id: number) {
+    this.router.navigate(['/task', id]);
+  }
+
   checkStateManagement() {
     this.router.navigate(['/state-management-check']);
   }

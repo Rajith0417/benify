@@ -1,0 +1,8 @@
+
+<div class="task-details" *ngIf="task">
+  <button class="state-management" (click)="goBack()">
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="assignment_return" matTooltip="Go back"></mat-icon>
+  </button>
+  <p class="status">{{ task.status }}</p>
+  <p class="description">{{ task.description }}</p>
+</div>

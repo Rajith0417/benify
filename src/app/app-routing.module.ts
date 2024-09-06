@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { KanbanComponent } from './kanban/kanban.component';
-import { TaskComponent } from './task/task.component';
+import { TaskOpenComponent } from './task-open/task-open.component';
 
 const routes: Routes = [
   {path: "kanban", component: KanbanComponent},
-  {path: "state-management-check", component: TaskComponent},
+  {path: "task/:id", component: TaskOpenComponent},
   { path: '', redirectTo: 'kanban', pathMatch: 'full' }
 ];
 

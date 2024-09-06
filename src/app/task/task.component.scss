@@ -14,11 +14,19 @@
 
   button {
     position: absolute;
-    top: 0;
     right: 0;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    &.delete {
+      top: 0;
+    }
+    &.open {
+      bottom: 0;
+      .mat-icon {
+        font-size: 20px;
+      }
+    }
   }
   &:hover {
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
