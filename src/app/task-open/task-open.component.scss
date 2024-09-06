@@ -13,10 +13,14 @@
     border: none;
     cursor: pointer;
     align-self: start;
+    color: rgba(0, 0, 0, 0.7);
     .mat-icon {
       font-size: 32px;
       width: auto;
       height: auto;
+    }
+    &:hover {
+      color: rgba(0, 0, 0, 0.9);
     }
   }
   .task-details {
@@ -29,6 +33,7 @@
   .description {
     font-size: 60px;
     text-align: center;
+    color: rgba(0, 0, 0, 0.7);
   }
   .status {
     font-size: 40px;
