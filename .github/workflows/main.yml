@@ -1,0 +1,38 @@
+name: Build and Deploy Angular App
+
+on:
+  push:
+    branches:
+      - main  # or your default branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Clean install (workaround for Rollup bug)
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
+
+      - name: ✅ Run tests
+        run: npm run test -- --watch=false --browsers=ChromeHeadless
+        continue-on-error: false  # Fail the workflow if tests fail
+
+      - name: 🛠️ Build Angular app
+        run: npm run build -- --configuration production --base-href=/benify/
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages           # The branch the action should deploy to.
+          folder: dist/benify/browser  # The folder the action should deploy.
+          token: ${{ secrets.cicd }}
